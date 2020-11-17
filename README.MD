@@ -9,5 +9,3 @@
 ## ATTRIBUTIONS: 
 - MY REPO FOR MONGODB: https://github.com/jgregorytweedie/mongoDB
 ### Comments:
-- For some reason, it pops up as an error whenever i specify an ID. I think this could be because of my mongoDB? but I am not too sure. 
-- when I run the home page on heroku, it works fine, and it runs fine in node.
