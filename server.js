@@ -1,11 +1,15 @@
 // Lets start by putting in my dependencies.
-const app = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
+const ejs = require("ejs");
 require("dotenv").config();
 
-// app.set("view engine", "ejs");
+const app = express();
 
+//setting view engine
+app.set("view engine", "ejs");
+// middleware stuff
 app.use(express.static(path.join(__dirname, "public")));
 
 // Now to connect to mongoDB
