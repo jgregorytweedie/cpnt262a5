@@ -6,6 +6,8 @@ const ejs = require("ejs");
 require("dotenv").config();
 
 const app = express();
+// importing my module
+const foods = require("./models/food.js");
 
 //setting view engine
 app.set("view engine", "ejs");
@@ -25,12 +27,24 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", function() {
   console.log("Connected to DB...");
 });
+// this is my homepage endpoint
+app.get("/", (req, res) => res.send("<h1> Hello, there.</h1> <p>Check out /api/v0/foods for some cool foods.</p>"))
 
-app.get("/", (req, res) => res.send("Check out /api/v0/naturePhotos to see some neato photos"))
+// below, we are going to return those nature photos in an array.
+app.get("api/v0/foods", (req, res) => {
+  photos.find({}, (err, data) => {
+    console.log(data);
+    res.json(data);
+  });
+});
 
-// below, we are going to return those nature photos
-
-
+// here is my JSON endpoint which returns specific objects with a unique ID to each object.
+app.get("/api/v0/foods/:id", (req, res) => {
+  let foodID = req.params.id;
+  foods.findOne({ id: foodID }, function (err, p) {
+    res.json(food)
+  });
+});
 // here, we wanna show a specific error if we type in a different address or if none of this works
 app.use(function(req, res) {
   res.status(404);
