@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 }); 
 
 const db = mongoose.connection;
-// copied this mongoose code from my mongo DB repo, link in README.
+
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 db.once("open", function() {
