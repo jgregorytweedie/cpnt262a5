@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const ejs = require("ejs");
 require("dotenv").config();
+// some mongoDB stuff copied from my mongoDB repo
+
 
 const app = express();
 // importing my module
@@ -18,7 +20,7 @@ app.use(express.static(path.join(__dirname, "public")));
 mongoose.connect(process.env.MONGODB_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true
-});
+}); 
 
 const db = mongoose.connection;
 // copied this mongoose code from my mongo DB repo, link in README.
@@ -45,6 +47,7 @@ app.get("/api/v0/foods/:id", (req, res) => {
     res.json(food)
   });
 });
+
 // here, we wanna show a specific error if we type in a different address or if none of this works
 app.use(function(req, res) {
   res.status(404);
