@@ -1,10 +1,10 @@
 // Lets start by putting in my dependencies.
-const express = require("express");
+const app = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
 
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
